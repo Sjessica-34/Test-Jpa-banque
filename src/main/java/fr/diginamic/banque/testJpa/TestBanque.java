@@ -13,7 +13,7 @@ public class TestBanque {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("banque");
         EntityManager em = emf.createEntityManager();
-
+        System.out.println("connected db");
         em.getTransaction().begin();
 
         //Creation d'un CLIENT
