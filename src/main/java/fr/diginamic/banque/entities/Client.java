@@ -10,10 +10,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "CLIENT")
-public class Client extends Banque implements Serializable {
+public class Client  implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ID")
   private long id;
 
@@ -26,8 +26,8 @@ public class Client extends Banque implements Serializable {
   @Column(name = "DATE_NAISSANCE", nullable = false)
   private LocalDate dateNaissance;
 
-  @Embedded
-  private Adresse adresse;
+  @OneToOne(cascade = CascadeType.PERSIST)
+   private Adresse adresse;
 
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "ID_BANQUE", nullable = false)
@@ -55,7 +55,6 @@ public class Client extends Banque implements Serializable {
   }
 
   public Client(String nom, String prenom, LocalDate dateNaissance, Adresse adresse, Banque banque) {
-    super(nom);
     this.prenom = prenom;
     this.dateNaissance = dateNaissance;
     this.adresse = adresse;
@@ -160,7 +159,7 @@ public class Client extends Banque implements Serializable {
             ", dateNaissance=" + dateNaissance +
             ", adresse=" + adresse +
             ", banque=" + banque +
-            ", comptes=" + comptes +
+            ", comptes=" + comptes.size() +
             '}';
   }
 

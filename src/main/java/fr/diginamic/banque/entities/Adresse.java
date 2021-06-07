@@ -1,11 +1,17 @@
 package fr.diginamic.banque.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Embeddable
+@Entity
 public class Adresse implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
+
+    @OneToOne(mappedBy = "adresse")
+    private Client client;
 
     @Column(name = "NUMERO", nullable = false)
     private int numero;

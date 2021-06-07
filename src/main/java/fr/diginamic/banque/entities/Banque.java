@@ -8,10 +8,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "BANQUE")
-public class Banque extends Adresse implements Serializable {
+public class Banque implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
 
@@ -21,15 +21,10 @@ public class Banque extends Adresse implements Serializable {
     @OneToMany(mappedBy = "banque" , cascade = CascadeType.PERSIST)
     private Set<Client> clients;
 
-    // <--> Solution de Dimitri
-    //ManyToOne
-    //@JoinColum(name="id_client")
-    //private Set<Client> clients;
-
 
     //Constructeur avec la classe adresse
     public Banque(int numero, String rue, int codePostal, String ville, String nom, Set<Client> clients) {
-        super(numero, rue, codePostal, ville);
+
         this.nom = nom;
         this.clients = clients;
     }
@@ -93,7 +88,7 @@ public class Banque extends Adresse implements Serializable {
         return "Banque{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", clients=" + clients +
+                ", clients=" + clients.size() +
                 '}';
     }
 }

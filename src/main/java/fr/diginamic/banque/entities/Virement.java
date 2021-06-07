@@ -4,20 +4,28 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
-@DiscriminatorValue("Virement")
+@DiscriminatorValue("VIREMENT")
 public class Virement extends Operation implements Serializable {
 
-    @Column(name = "BENEFICIAIRE", nullable = false)
+    @Column(name = "BENEFICIAIRE")
     private String beneficiaire;
 
     public Virement() {
+
     }
 
     public Virement(String beneficiaire) {
         this.beneficiaire = beneficiaire;
     }
+
+    public Virement(LocalDate date, double montant, String motif, String beneficiaire) {
+        super(date, montant, motif);
+        this.beneficiaire = beneficiaire;
+    }
+
 
     public String getBeneficiaire() {
         return beneficiaire;
@@ -25,12 +33,6 @@ public class Virement extends Operation implements Serializable {
 
     public void setBeneficiaire(String beneficiaire) {
         this.beneficiaire = beneficiaire;
-    }
-
-
-    @Override
-    public long getId() {
-        return super.getId();
     }
 
     @Override

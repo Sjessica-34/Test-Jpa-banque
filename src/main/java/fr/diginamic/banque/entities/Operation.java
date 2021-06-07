@@ -27,7 +27,10 @@ public class Operation implements Serializable {
     @JoinColumn(name = "ID_COMPTE")
     private Compte compte;
 
-    public Operation() {
+    public Operation (){
+
+    }
+    public Operation(LocalDate date, double montant, String motif) {
     }
 
     public Operation(long id, LocalDate date, double montant, String motif) {
