@@ -53,7 +53,7 @@ public class TestBanque {
         Compte compte1 = new Compte ("123456789", 150_000.00);
         Banque banque = new Banque("la banque des Etoiles");
 
-        Adresse adresse = new Adresse(6, "rue des étoiles" , 31000, "Coruscant");
+//        Adresse adresse = new Adresse(6, "rue des étoiles" , 31000, "Coruscant");
 //        Client client1 = new Client("Skywalker", "Luke", LocalDate.of(1938,6,24));
 //        client1.setAdresse(adresse);
 //        client1.setBanque(banque);
@@ -63,10 +63,10 @@ public class TestBanque {
 //        client2.setAdresse(adresse2);
 //        client2.setBanque(banque);
 
-        compte1.addClient(client1);
+//        compte1.addClient(client1);
  //       compte1.addClient(client2);
 
-        em.persist(compte1);
+//        em.persist(compte1);
 //
        // insérer un client avec plusieurs comptes (AV et livretA) :
 
